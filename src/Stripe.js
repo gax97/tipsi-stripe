@@ -84,6 +84,20 @@ class Stripe {
     return StripeModule.paymentRequestWithApplePay(items, options)
   }
 
+  updateApplePayItems = (items = []) => {
+    // checkInit(this)
+    // checkArgs(
+    //   types.paymentRequestWithApplePayItemsPropTypes,
+    //   { items }, 'items', 'Stripe.paymentRequestWithApplePay'
+    // )
+    // checkArgs(
+    //   types.paymentRequestWithApplePayOptionsPropTypes,
+    //   options, 'options', 'Stripe.paymentRequestWithApplePay'
+    // )
+    console.log("DONE")
+    // return StripeModule.updateApplePayItems(items)
+  }
+
   paymentRequestWithNativePay(options = {}, items = []) {
     return Platform.select({
       ios: () => this.paymentRequestWithApplePay(items, options),
