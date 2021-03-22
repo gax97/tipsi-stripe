@@ -13,6 +13,8 @@
 		3A4EF3281DC8FD4600A7C0BD /* TPSCardField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EF3271DC8FD4600A7C0BD /* TPSCardField.m */; };
 		3C0CB3831E6D765D00CF5D16 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0CB3821E6D765D00CF5D16 /* Stripe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B81C8CDE1F978E320021EB09 /* TPSError.m in Sources */ = {isa = PBXBuildFile; fileRef = B81C8CDD1F978E320021EB09 /* TPSError.m */; };
+		EC7821572608CA2100D294D0 /* StripeSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7821562608CA2100D294D0 /* StripeSdk.swift */; };
+		EC78215A2608CA5E00D294D0 /* StripeSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7821592608CA5E00D294D0 /* StripeSdk.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +41,10 @@
 		3C0CB3821E6D765D00CF5D16 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B81C8CDC1F978E320021EB09 /* TPSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSError.h; sourceTree = "<group>"; };
 		B81C8CDD1F978E320021EB09 /* TPSError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSError.m; sourceTree = "<group>"; };
+		EC7821542608C9E000D294D0 /* StripeSdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StripeSdk-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC7821552608CA2100D294D0 /* TPSStripe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TPSStripe-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC7821562608CA2100D294D0 /* StripeSdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeSdk.swift; sourceTree = "<group>"; };
+		EC7821592608CA5E00D294D0 /* StripeSdk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StripeSdk.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,11 +92,15 @@
 				3A1FF6F61DC3857F00A43A04 /* TPSStripeManager.h */,
 				3A1FF6F71DC3857F00A43A04 /* TPSStripeManager.m */,
 				3A4EF3231DC8F90100A7C0BD /* TPSCardFieldManager.h */,
+				EC7821562608CA2100D294D0 /* StripeSdk.swift */,
+				EC7821592608CA5E00D294D0 /* StripeSdk.m */,
 				3A4EF3241DC8F90100A7C0BD /* TPSCardFieldManager.m */,
+				EC7821542608C9E000D294D0 /* StripeSdk-Bridging-Header.h */,
 				3A4EF3261DC8FD4600A7C0BD /* TPSCardField.h */,
 				3A4EF3271DC8FD4600A7C0BD /* TPSCardField.m */,
 				B81C8CDC1F978E320021EB09 /* TPSError.h */,
 				B81C8CDD1F978E320021EB09 /* TPSError.m */,
+				EC7821552608CA2100D294D0 /* TPSStripe-Bridging-Header.h */,
 			);
 			path = TPSStripe;
 			sourceTree = "<group>";
@@ -126,6 +136,7 @@
 				TargetAttributes = {
 					3A3A7F191DC27B520030F9DC = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 1240;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -135,6 +146,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 3A3A7F111DC27B520030F9DC;
@@ -153,9 +165,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4EF3251DC8F90100A7C0BD /* TPSCardFieldManager.m in Sources */,
+				EC7821572608CA2100D294D0 /* StripeSdk.swift in Sources */,
 				3A1FF6F81DC3857F00A43A04 /* TPSStripeManager.m in Sources */,
 				B81C8CDE1F978E320021EB09 /* TPSError.m in Sources */,
 				3A4EF3281DC8FD4600A7C0BD /* TPSCardField.m in Sources */,
+				EC78215A2608CA5E00D294D0 /* StripeSdk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,26 +279,35 @@
 		3A3A7F241DC27B520030F9DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"${BUILT_PRODUCTS_DIR}/**",
 					"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/Stripe/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TPSStripe/TPSStripe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		3A3A7F251DC27B520030F9DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"${BUILT_PRODUCTS_DIR}/**",
 					"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/Stripe/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TPSStripe/TPSStripe-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
