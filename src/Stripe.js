@@ -5,7 +5,7 @@ import checkInit from './utils/checkInit'
 import * as types from './utils/types'
 import errorCodes from './errorCodes'
 
-const { StripeModule, StripeSdk } = NativeModules
+const { StripeModule } = NativeModules
 
 class Stripe {
   stripeInitialized = false
@@ -68,11 +68,6 @@ class Stripe {
       options, 'options', 'Stripe.paymentRequestWithAndroidPay'
     )
     return StripeModule.paymentRequestWithAndroidPay(options)
-  }
-
-  call = () => {
-    console.log(JSON.stringify(StripeSdk))
-    StripeSdk.initialise()
   }
 
   // @deprecated use paymentRequestWithNativePay
