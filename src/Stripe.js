@@ -5,7 +5,7 @@ import checkInit from './utils/checkInit'
 import * as types from './utils/types'
 import errorCodes from './errorCodes'
 
-const { StripeModule, StripeModulev2 } = NativeModules
+const { StripeModule, StripeModulev2, SwiftComponentManager } = NativeModules
 
 console.log(StripeModulev2)
 class Stripe {
@@ -28,7 +28,8 @@ class Stripe {
   )
 
   call = () => {
-    console.log(StripeModulev2)
+    SwiftComponentManager.passValueFromReact('Hello')
+    console.log(NativeModules)
   }
   // @deprecated use deviceSupportsNativePay
   deviceSupportsApplePay = () => (
