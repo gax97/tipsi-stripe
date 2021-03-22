@@ -5,7 +5,7 @@ import checkInit from './utils/checkInit'
 import * as types from './utils/types'
 import errorCodes from './errorCodes'
 
-const { StripeModule, StripeModulev2, HelloWorld } = NativeModules
+const { StripeModule, StripeModulev2, MyModule } = NativeModules
 
 console.log(StripeModulev2)
 class Stripe {
@@ -28,8 +28,8 @@ class Stripe {
   )
 
   call = () => {
-    HelloWorld.construct('Hello', 100)
-    console.log(HelloWorld, JSON.stringify(NativeModules))
+    MyModule.construct('Hello', 100)
+    console.log(MyModule, JSON.stringify(NativeModules))
   }
   // @deprecated use deviceSupportsNativePay
   deviceSupportsApplePay = () => (
