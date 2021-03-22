@@ -5,8 +5,9 @@ import checkInit from './utils/checkInit'
 import * as types from './utils/types'
 import errorCodes from './errorCodes'
 
-const { StripeModule } = NativeModules
+const { StripeModule, StripeModulev2 } = NativeModules
 
+console.log(StripeModulev2)
 class Stripe {
   stripeInitialized = false
 
