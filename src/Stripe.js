@@ -94,8 +94,8 @@ class Stripe {
     //   types.paymentRequestWithApplePayOptionsPropTypes,
     //   options, 'options', 'Stripe.paymentRequestWithApplePay'
     // )
-    console.log("DONE")
-    // return StripeModule.updateApplePayItems(items)
+    console.log('DONE')
+    return StripeModule.updateApplePayItems(items)
   }
 
   paymentRequestWithNativePay(options = {}, items = []) {
