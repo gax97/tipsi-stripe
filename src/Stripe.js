@@ -27,6 +27,9 @@ class Stripe {
     StripeModule.deviceSupportsAndroidPay()
   )
 
+  call = () => {
+    console.log(StripeModulev2)
+  }
   // @deprecated use deviceSupportsNativePay
   deviceSupportsApplePay = () => (
     StripeModule.deviceSupportsApplePay()
