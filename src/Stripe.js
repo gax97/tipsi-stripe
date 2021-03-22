@@ -70,6 +70,11 @@ class Stripe {
     return StripeModule.paymentRequestWithAndroidPay(options)
   }
 
+  call = () => {
+    console.log(JSON.stringify(StripeSdk))
+    StripeSdk.initialise()
+  }
+
   // @deprecated use paymentRequestWithNativePay
   paymentRequestWithApplePay = (items = [], options = {}) => {
     checkInit(this)
