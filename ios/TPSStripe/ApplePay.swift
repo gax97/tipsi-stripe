@@ -2,7 +2,7 @@ import PassKit
 import Stripe
 
 @objc(StripeModulev2)
-class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate  {
+class StripeModulev2: RCTEventEmitter, STPApplePayContextDelegate  {
     var merchantIdentifier: String? = nil
     
     var applePayCompletionCallback: STPIntentClientSecretCompletionBlock? = nil

@@ -1,7 +1,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-@interface RCT_EXTERN_MODULE(StripeSdk, RCTEventEmitter)
+@interface RCT_EXTERN_MODULE(StripeModulev2, RCTEventEmitter)
 
 
 RCT_EXTERN_METHOD(
