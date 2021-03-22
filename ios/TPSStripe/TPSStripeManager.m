@@ -385,6 +385,54 @@ RCT_EXPORT_METHOD(paymentRequestWithCardForm:(NSDictionary *)options
     });
 }
 
+RCT_EXPORT_METHOD(updateApplePaySheet:(NSArray *)items
+                                    withOptions:(NSDictionary *)options
+                                    resolver:(RCTPromiseResolveBlock)resolve
+                                    rejecter:(RCTPromiseRejectBlock)reject) {
+    if(!requestIsCompleted) {
+        NSDictionary *error = [errorCodes valueForKey:kErrorKeyBusy];
+        reject(error[kErrorKeyCode], error[kErrorKeyDescription], nil);
+        return;
+    }
+
+    requestIsCompleted = NO;
+    // Save promise handlers to use in `paymentAuthorizationViewController`
+    promiseResolver = resolve;
+    promiseRejector = reject;
+
+    NSString* currencyCode = @"USD";
+    NSString* countryCode = @"US";
+
+    
+    NSMutableArray *summaryItems = [NSMutableArray array];
+
+    for (NSDictionary *item in items) {
+        PKPaymentSummaryItem *summaryItem = [[PKPaymentSummaryItem alloc] init];
+        summaryItem.label = item[@"label"];
+        summaryItem.amount = [NSDecimalNumber decimalNumberWithString:item[@"amount"]];
+        summaryItem.type = [@"pending" isEqualToString:item[@"type"]] ? PKPaymentSummaryItemTypePending : PKPaymentSummaryItemTypeFinal;
+        [summaryItems addObject:summaryItem];
+    }
+
+    PKPaymentRequestUpdate *paymentRequestUpdate = [[PKPaymentRequestUpdate alloc] initWithPaymentSummaryItems:summaryItems];
+
+//    if ([self canSubmitPaymentRequest:paymentRequest rejecter:reject]) {
+//        PKPaymentAuthorizationViewController *paymentAuthorizationVC = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
+//        paymentAuthorizationVC.delegate = self;
+//
+//        // move to the end of main queue
+//        // allow the execution of hiding modal
+//        // to be finished first
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [RCTPresentedViewController() presentViewController:paymentAuthorizationVC animated:YES completion:nil];
+//        });
+//    } else {
+//        // There is a problem with your Apple Pay configuration.
+//        [self resetPromiseCallbacks];
+//        requestIsCompleted = YES;
+//    }
+}
+
 RCT_EXPORT_METHOD(paymentRequestWithApplePay:(NSArray *)items
                                     withOptions:(NSDictionary *)options
                                     resolver:(RCTPromiseResolveBlock)resolve
